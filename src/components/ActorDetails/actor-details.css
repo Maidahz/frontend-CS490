@@ -1,0 +1,29 @@
+/* Add styles for ActorDetails component */
+.actor-details-card {
+    padding: 10px;
+    border: 1px solid #ddd;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .actor-details-card h2 {
+    margin-top: 0;
+    margin-bottom: 10px;
+  }
+  
+  .actor-details-card p {
+    margin-bottom: 5px;
+  }
+  
+  .actor-details-card ul {
+    list-style-type: none;
+    padding-left: 0;
+  }
+  
+  .actor-details-card li {
+    margin-bottom: 5px;
+  }
+  
+  /* Add more styles for actor details here */
+  
