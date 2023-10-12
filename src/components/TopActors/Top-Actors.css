@@ -1,0 +1,64 @@
+/* Add styling for TopActorsList */
+.top-actors {
+  display: flex;
+  background-color: #f4f4f4;
+  /* padding: 20px; */
+  border: 1px solid #ddd;
+  margin-bottom: 20px;
+  /* padding-left: 100px; */
+  justify-content: space-between; /* Align items horizontally */
+  /* margin-right: 100px; */
+}
+
+.top-actors h1 {
+  margin-top: 20px;
+  margin-left: 20px;
+  margin-bottom: 10px;
+  border: none;
+  text-align: center;
+}
+
+.top-actors-list{
+  /* margin-right: 10px; */
+  
+}
+
+
+.top-actors ul {
+  list-style-type: none;
+  display: block;
+  padding-top: 5rem;
+  border: none;
+  margin-right: 2rem;
+  
+
+}
+
+.top-actors li {
+  margin-bottom: 10px;
+}
+
+.top-actors a {
+  text-decoration: none;
+  color: blue;
+}
+
+.top-actors a:hover {
+  text-decoration: underline;
+}
+
+/* Add a separate class for actor names */
+.actor-name {
+  cursor: pointer;
+}
+
+/* Add a card container for actor details */
+.actor-card {
+  flex: 1; /* Take up available space */
+  margin-left: 20px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}

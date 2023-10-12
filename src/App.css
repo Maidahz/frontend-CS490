@@ -58,3 +58,14 @@ h1 {
   margin-bottom: 20px;
   padding: 10px;
 }
+
+/* Flexbox styles to display lists next to each other */
+.list-container {
+  display: flex;
+  justify-content: space-between; /* Adjust this as needed */
+}
+
+.list {
+  flex: 1;
+  margin-right: 10px; /* Add some space between the lists */
+}

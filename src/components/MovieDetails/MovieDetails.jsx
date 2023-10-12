@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
+import './Movie-Details.css'
 
 function MovieDetails() {
   const [movie, setMovie] = useState(null);
@@ -21,6 +22,7 @@ function MovieDetails() {
   }, [id]);
 
   return (
+    <div className='content-Margin'>
     <div>
       {movie ? (
         <div>
@@ -36,6 +38,7 @@ function MovieDetails() {
       ) : (
         <p>Loading...</p>
       )}
+    </div>
     </div>
   );
 }
