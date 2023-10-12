@@ -126,17 +126,12 @@ class TopActorsList extends React.Component {
           <ul className="top-actors ul"> 
             {top5Actors.map((actor) => (
               <li key={actor.actor_id}>
-                {/* <Link
-                  to={`/homepage/actor/${actor.actor_id}`}
-                  onClick={() => this.handleActorClick(actor.actor_id)} // Pass actor id on click
-                > */}
                 <span
                   className='actor-name'
                   onClick={()=> this.handleActorClick(actor.actor_id)}
                 >
                   {actor.actor_name}
                 </span>
-                {/* </Link> */}
               </li> 
             ))}
           </ul>
