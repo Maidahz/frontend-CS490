@@ -63,15 +63,6 @@ function CustomersPage() {
     }
   }
 
-  // const updateCustomer = async (customer_id, updatedData) => {
-  //   try {
-  //     await axios.put(`http://localhost:5000/api/customers/${customer_id}`, updatedData);
-  //     fetchCustomers();
-  //   } catch (error) {
-  //     console.error('Error updating customer:', error);
-  //   }
-  // }
-
   const updateCustomer = async (customer_id) => {
     try {
         const store_id = prompt('Enter new Store ID:', '');
@@ -120,6 +111,27 @@ function CustomersPage() {
       console.error('Error searching customers:', error);
     }
   };
+  // Customer Details here
+  const [selectedCustomer, setSelectedCustomer] = useState(null);
+  const getCustomerDetails = async (customer_id) => {
+    try {
+        const response = await axios.get(`http://localhost:5000/api/customers/details/${customer_id}`);
+        setSelectedCustomer(response.data);
+      } catch (error) {
+        console.error('Error fetching customer details:', error);
+      }
+    }
+
+  //Movie Returned Code here
+  const markMovieReturn = async (customer_id, movie_id) => {
+    try {
+      await axios.put(`http://localhost:5000/api/customers/return/${customer_id}/${movie_id}`);
+      console.log('Movie marked as returned');
+    } catch (error) {
+      console.error('Error marking movie return:', error);
+    }
+  }
+
   return (
     <div>
       <h1>Welcome to Customers Page!</h1>
@@ -205,6 +217,15 @@ function CustomersPage() {
           {customers.map((customer) => (
             <li key={customer.customer_id}>
               {customer.customer_id} {customer.store_id} {customer.first_name} {customer.last_name} ({customer.email} {customer.address_id}{customer.active} {customer.create_date}{customer.last_update})
+              <button onClick={() => getCustomerDetails(customer.customer_id)}>
+                View Details
+              </button>
+              <button onClick={() => {
+                const movie_id = prompt('Enter the movie ID to mark as returned:');
+                if (movie_id) markMovieReturn(customer.customer_id, movie_id);
+          }}>
+              Mark Movie Return
+              </button>
               <button onClick={() => updateCustomer(customer.customer_id, { first_name: 'Updated' })}>
                 Update
               </button>
@@ -213,6 +234,20 @@ function CustomersPage() {
           ))}
         </ul>
       </div>
+      {selectedCustomer && (
+        <div>
+            <h3>Customer Details:</h3>
+            <p><strong>Customer ID:</strong> {selectedCustomer.customer_id}</p>
+            <p><strong>Store ID:</strong> {selectedCustomer.store_id}</p>
+            <p><strong>First Name:</strong> {selectedCustomer.first_name}</p>
+            <p><strong>Last Name:</strong> {selectedCustomer.last_name}</p>
+            <p><strong>Email:</strong> {selectedCustomer.email}</p>
+            <p><strong>Address ID:</strong> {selectedCustomer.address_id}</p>
+            <p><strong>Active:</strong> {selectedCustomer.active}</p>
+            <p><strong>Create Date:</strong> {selectedCustomer.create_date}</p>
+            <p><strong>Last Update:</strong> {selectedCustomer.last_update}</p>
+        </div>
+      )}
     </div>
   );
 }
